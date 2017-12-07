@@ -61,13 +61,19 @@
   <?php foreach ($resource->language as $code): ?>
     <dc:language xsi:type="dcterms:ISO639-3"><?php echo esc_specialchars(strval(strtolower($iso639convertor->getID3($code)))) ?></dc:language>
   <?php endforeach; ?>
-
-  <?php
-     if (isset($resource->digitalObjects[0])) {
-     echo "<dc:relation>http://";
-     echo $withoutExt = preg_replace('/\\.[^.\\s]{3,4}$/', '',$sf_request->getHost().$sf_request->getRelativeUrlRoot().$resource->digitalObjects[0]->getFullPath());
-     echo "_142.jpg</dc:relation>";
-     }
+  
+  <?php foreach ($resource->digitalObjects as $digitalObject) {
+    foreach ($dc->type as $registosonoro) {
+    }
+  }
+  if (isset($resource->digitalObjects[0]) and $registosonoro != "sound") {
+    echo "<dc:relation>http://";
+    echo $sf_request->getHost() . $sf_request->getRelativeUrlRoot() . $digitalObject->path . $digitalObject->getChildByUsageId(QubitTerm::THUMBNAIL_ID);
+    echo "</dc:relation>";
+  }
+  elseif (isset($resource->digitalObjects[0]) and $registosonoro == "sound") {
+    echo "<dc:relation>https://raw.githubusercontent.com/artefactual/atom/stable/2.4.x/images/generic-icons/audio.png</dc:relation>";
+  }
   ?>
 
   <?php foreach ($dc->coverage as $item): ?>
