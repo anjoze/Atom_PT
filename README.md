@@ -5,3 +5,4 @@ Substituir o ficheiro _dc.xml.php em:
 ```sh
 /plugins/sfDcPlugin/modules/sfDcPlugin/templates/_dc.xml.php
 ```
+ [ATOM]: <https://www.accesstomemory.org/en/>
