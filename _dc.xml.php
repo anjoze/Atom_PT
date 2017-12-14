@@ -83,6 +83,3 @@
   <dc:rights><?php echo esc_specialchars(strval($resource->accessConditions)) ?></dc:rights>
 
 </oai_dc:dc>
-
-
-//Teste de versao
